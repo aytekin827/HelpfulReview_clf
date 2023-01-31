@@ -14,11 +14,13 @@ https://www.notion.so/Helpful-Review-Mode-7bc2f18feb244e96b1905f11a9ee0ee1
   
   3. 기대효과  
     - 소비자 :  
-      - 도움이 되는 리뷰를 소비자에게 제공하여 합리적인 소비가 가능함.  
-      - 리뷰 작성 중 즉각적인 피드백을 통해서 도움이 되는 리뷰를 적도록 유도할 수 있음.  
-    - 판매자 :  
-      - 도움이 되는 리뷰를 통해서 사업과 상품개발의 insight를 얻을 수 있음.
-### 데이터
+        도움이 되는 리뷰를 소비자에게 제공하여 합리적인 소비가 가능함.  
+        리뷰 작성 중 즉각적인 피드백을 통해서 도움이 되는 리뷰를 적도록 유도할 수 있음.  
+    - 판매자 :    
+        도움이 되는 리뷰를 통해서 사업과 상품개발의 insight를 얻을 수 있음.
+      
+      
+## 데이터
 - 데이터 수집
   자체 제작 커스텀 크롤러를 이용하여 바지/레깅스(47578개), 스포츠의류(25038개), 후드집업(20195개) 이렇게 세가지 카테고리의 리뷰데이터를 수집하였습니다.
   
@@ -35,3 +37,47 @@ https://www.notion.so/Helpful-Review-Mode-7bc2f18feb244e96b1905f11a9ee0ee1
   소비자들이 주로 사이즈와 길이, 허리, 가격을 중요하게 생각해서 리뷰에 많이 작성했다는 것을 알 수 있다.
 
   ![image](https://user-images.githubusercontent.com/78078141/215738615-c908c3a4-a2c0-4cf9-a8f9-aa347a62a19b.png)
+  
+  - 라벨링
+  **‘도움이 됐어요'** 가 **1개 이상**인 데이터(label 1) → **도움이 되는** 리뷰(**helpful** review)  
+  **’도움이 됐어요'** 가 **0개**인 데이터(label 0) → **도움이 되지 않는** 리뷰(**helpless** review)  
+
+  라벨의 비율이 대략 50:50이다.
+
+  <img src="https://user-images.githubusercontent.com/78078141/215740015-0cc3889a-1bbd-4942-8aa5-90252298146b.png" width="50%" height="50%"/>
+  
+  
+ ## 모델링
+ 1. KcELECTRA를 사용한 분류모델
+    
+    Pre-Trained model : **KcELECTRA (**https://github.com/Beomi/KcELECTRA**)**
+    
+    KcELECTRA모델은 **온라인뉴스에서 댓글과 대댓글 데이터**를 학습한 모델로 뉴스, 위키, 책, 법조문과 같이 잘 정제된 텍스트가 아닌 **구어체와 신조어, 오탈자 등 정제되지 않은 텍스트 분석**에 적합합니다. 
+    
+    **Huggingface의 Transformers 라이브러리**를 통해서 간편히 불러와서 사용가능합니다.
+    
+    Fine tuning : 각 카테고리별 쿠팡 리뷰 데이터(바지레깅스-47578, 스포츠의류-25038 ,후드집업-20195)
+    
+    training result
+    
+    바지레깅스 : Train acc = , Val acc = , Test acc = 0.6750
+    
+    스포츠의류 : Train acc = , Val acc = 87.927, Test acc = 0.6980
+    
+    후드집업 : Train acc = , Val acc = , Test acc = 0.6907
+    
+  ## tkinter를 이용한 GUI 제작
+  - **제품 카테고리와 상품명, 첨부파일개수, 리뷰**를 **입력**하여 추론(inference)합니다.
+- **확률**과 함께 **추론 결과를 출력**합니다.
+
+  <img src="https://user-images.githubusercontent.com/78078141/215740355-a76da9b6-d2eb-42ae-98c8-42b8edf047e0.png" width="50%" height="50%"/>
+
+
+### reference
+[https://github.com/Beomi/KcELECTRA](https://github.com/Beomi/KcELECTRA)
+
+[PyTorch documentation - PyTorch 1.13 documentation](https://pytorch.org/docs/stable/index.html)
+
+[beomi/KcELECTRA-base · Hugging Face](https://huggingface.co/beomi/KcELECTRA-base)
+
+ 
