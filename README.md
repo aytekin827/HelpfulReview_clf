@@ -60,11 +60,11 @@ https://www.notion.so/Helpful-Review-Model-025932c7654a4d9d822d22682527857f
     
     training result
     
-    바지레깅스 : Train acc = , Val acc = , Test acc = 0.6750
-    
-    스포츠의류 : Train acc = , Val acc = 87.927, Test acc = 0.6980
-    
-    후드집업 : Train acc = , Val acc = , Test acc = 0.6907
+    바지레깅스 : Train acc = 0.7418, Val acc =0.6955 , Test acc = 0.6975
+
+    스포츠의류 : Train acc = 0.8967 , Val acc = 0.7038, Test acc = 0.7068
+
+    후드집업 : Train acc = 0.8671, Val acc = 0.6720 , Test acc = 0.6907
     
   ## tkinter를 이용한 GUI 제작
   - **제품 카테고리와 상품명, 첨부파일개수, 리뷰**를 **입력**하여 추론(inference)합니다.
