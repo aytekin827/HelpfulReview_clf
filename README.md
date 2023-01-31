@@ -35,8 +35,8 @@ https://www.notion.so/Helpful-Review-Mode-7bc2f18feb244e96b1905f11a9ee0ee1
   당연히 바지/레깅스 카테고리의 리뷰이기 때문에 바지의 글자가 가장 크게 나타났다. 
 
   소비자들이 주로 사이즈와 길이, 허리, 가격을 중요하게 생각해서 리뷰에 많이 작성했다는 것을 알 수 있다.
-
-  ![image](https://user-images.githubusercontent.com/78078141/215738615-c908c3a4-a2c0-4cf9-a8f9-aa347a62a19b.png)
+  
+  <img src="https://user-images.githubusercontent.com/78078141/215738615-c908c3a4-a2c0-4cf9-a8f9-aa347a62a19b.png" width="50%" height="50%"/>
   
   - 라벨링
   **‘도움이 됐어요'** 가 **1개 이상**인 데이터(label 1) → **도움이 되는** 리뷰(**helpful** review)  
