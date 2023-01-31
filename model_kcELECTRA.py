@@ -33,6 +33,7 @@ NUM_EPOCHS = 10
 MAX_LEN = 256 
 device = torch.device("cuda")
 log_interval=200
+
 print('>> hyperparameter <<')
 print('batch_size :{}'.format(BATCH_SIZE))
 print('NUM_EPOCHS :{}'.format(NUM_EPOCHS))
@@ -132,11 +133,7 @@ class EarlyStopper:
                 return True
         return False
 
-early_stopper = EarlyStopper(patience=3, min_delta=0.005)
-print('>> early stop<<')
-print(early_stopper)
-print('-=-'*30,'\n')
-category_name_list = ['브래지어','원피스','티셔츠']
+category_name_list = ['후드집업','스포츠의류','바지레깅스']
 for category_name in category_name_list:
         
     # 데이터 불러오기.
@@ -266,9 +263,10 @@ for category_name in category_name_list:
         print("epoch {} valid acc {}".format(e+1, valid_acc / (batch_id+1)))
         if early_stopper.early_stop(loss):
             print(' ----- Early Stop Occurred! ----- ')
+            torch.save(model, 'model/model_{}/results/KcELECTRA_cred_{}_{}.pt'.format(category_name, e, category_name))
             break
 
-        torch.save(model, 'model/model_{}/KcELECTRA_cred_{}_{}.pt'.format(category_name, e, category_name))
+        torch.save(model, 'model/model_{}/results/KcELECTRA_cred_{}_{}.pt'.format(category_name, e, category_name))
 
     print('>> 학습 finish <<')    
     print('-=-'*30,'\n')
@@ -314,7 +312,7 @@ for category_name in category_name_list:
 
     # 결과 저장
     print('>> 결과 저장 <<')
-    test.to_csv('model/model_{}/results/KcELECTRA_testdata_{}.csv'.format(category_name, category_name))
+    test.to_json('model/model_{}/results/KcELECTRA_testdata_{}.json'.format(category_name, category_name))
     print('-=-'*30,'\n')
 
     # confusion matrix
