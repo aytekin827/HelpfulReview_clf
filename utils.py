@@ -13,6 +13,9 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 BATCH_SIZE = 1
 MAX_LEN = 256
 
+def sigmoid(z):
+    return 1/(1 + np.exp(-z))
+
 def load_cate_model(category_name):
     model_path = glob('model/model_{}/results/*.pt'.format(category_name))[-1]
     model = torch.load(model_path)
@@ -74,6 +77,7 @@ def analyze_Bert(prod_name, review, model, tokenizer, device='cpu'):
         for inp in out:
             preds.append(inp.detach().cpu().numpy())
     Preds_percentage = np.array(preds)
+    Preds_percentage = sigmoid(Preds_percentage)
     preds = np.argmax(Preds_percentage)
 
     return preds, Preds_percentage
