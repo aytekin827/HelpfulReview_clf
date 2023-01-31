@@ -1,5 +1,5 @@
 # HelpfulReview_clf
-https://www.notion.so/Helpful-Review-Mode-7bc2f18feb244e96b1905f11a9ee0ee1
+https://www.notion.so/Helpful-Review-Model-025932c7654a4d9d822d22682527857f
 
 ## 프로젝트 개요
   1. 배경
