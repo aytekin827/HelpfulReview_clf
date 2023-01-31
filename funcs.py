@@ -25,14 +25,17 @@ def show_model_info():
      pretrained model : KcELECTRA
 
      [후드집업]
+     data : 20195개
      validation acc score : 
      test acc score : 
 
      [스포츠의류]
+     data : 25038개
      validation acc score : 
      test acc score : 
 
      [바지레깅스]
+     data : 47578개
      validation acc score : 
      test acc score : 
 
